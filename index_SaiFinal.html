@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Royal Engagement Celebration | August 30</title>
+
+  <style>
+    :root {
+      --gold-primary: #f5d77f;
+      --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+      --royal-maroon: #4a0419;
+      --card-bg: #fffbf5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: #080003;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    /* Main Container */
+    .grand-scene {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      max-width: 450px;
+      max-height: 860px;
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(0,0,0,0.95);
+      background: radial-gradient(circle at center, #2e0413 0%, #0d0105 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+    }
+
+    /* ================= 1. THE 3D PALACE GATES ================= */
+    .gate-wrapper {
+      position: absolute;
+      inset: 0;
+      z-index: 50;
+      perspective: 1200px;
+      display: flex;
+      cursor: pointer;
+    }
+
+    .door {
+      width: 50%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      background: linear-gradient(135deg, #2b030f 0%, #150006 100%);
+      box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+      border-top: 6px solid #b38728;
+      border-bottom: 6px solid #b38728;
+      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 10px;
+    }
+
+    .door-left {
+      left: 0;
+      border-right: 2px solid #5a3c10;
+      transform-origin: left center;
+    }
+
+    .door-right {
+      right: 0;
+      border-left: 2px solid #5a3c10;
+      transform-origin: right center;
+    }
+
+    .door-pattern {
+      width: 85%;
+      height: 85%;
+      border: 2px solid rgba(212, 175, 55, 0.4);
+      border-radius: 120px 120px 8px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: var(--gold-primary);
+    }
+
+    /* Ribbon & Center Seal */
+    .ribbon-bar {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      transform: translateY(-50%);
+      z-index: 60;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    .satin-ribbon {
+      position: absolute;
+      width: 100%;
+      height: 38px;
+      background: linear-gradient(90deg, #aa771c, #fcf6ba, #d4af37, #fcf6ba, #aa771c);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #754c00;
+    }
+
+    .royal-seal {
+      position: relative;
+      z-index: 70;
+      width: 105px;
+      height: 105px;
+      background: radial-gradient(circle at 30% 30%, #ffe49e, #c59328, #7a5002);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.7), 0 0 25px rgba(245, 215, 127, 0.5);
+      border: 3px solid #ffecb3;
+      animation: pulse-seal 2s infinite ease-in-out;
+    }
+
+    .royal-seal span { font-size: 32px; }
+    .royal-seal p {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: #3b2200;
+      letter-spacing: 1.2px;
+      margin-top: 3px;
+    }
+
+    .tap-beacon {
+      position: absolute;
+      bottom: -45px;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      color: var(--gold-primary);
+      text-shadow: 0 0 10px rgba(255,215,0,0.8);
+      white-space: nowrap;
+      animation: float-text 2s infinite ease-in-out;
+    }
+
+    /* ================= 2. MAIN INVITATION CARD ================= */
+    .grand-card-stage {
+      position: absolute;
+      inset: 14px;
+      z-index: 10;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fffdf9 0%, #f7ece0 100%);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      border: 2px solid #d4af37;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      color: #2b1f1d;
+      overflow-y: auto;
+    }
+
+    .invitation-inner-border {
+      border: 1px solid rgba(191, 149, 63, 0.45);
+      padding: 12px 8px;
+      border-radius: 12px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .palace-title {
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      color: var(--royal-maroon);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .sub-head {
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      color: #795548;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .couple-title-wrap {
+      margin: 6px 0;
+    }
+
+    .name-btn {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #63051e;
+      line-height: 1.1;
+      cursor: pointer;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 8px;
+      background: rgba(245, 215, 127, 0.2);
+      border: 1px dashed #d4af37;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .name-btn:hover, .name-btn:active {
+      transform: scale(1.05);
+      background: rgba(245, 215, 127, 0.4);
+    }
+
+    .name-hint {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 1.2px;
+      color: #b38728;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .ampersand {
+      font-size: 1.3rem;
+      color: #b38728;
+      display: block;
+      margin: 2px 0;
+      font-weight: 700;
+    }
+
+    .event-info-box {
+      background: rgba(245, 215, 127, 0.18);
+      border-top: 1px solid rgba(179, 135, 40, 0.3);
+      border-bottom: 1px solid rgba(179, 135, 40, 0.3);
+      padding: 8px;
+      margin: 6px 0;
+    }
+
+    .event-date-highlight {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--royal-maroon);
+      letter-spacing: 1px;
+    }
+
+    .event-time-venue {
+      font-size: 0.76rem;
+      color: #4e342e;
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+
+    /* Countdown */
+    .timer-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      margin: 6px 0;
+    }
+
+    .timer-card {
+      background: #2b030f;
+      color: #fff;
+      padding: 6px 2px;
+      border-radius: 6px;
+      border: 1px solid var(--gold-primary);
+    }
+
+    .timer-card span {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+    }
+
+    .timer-card label {
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ================= 3. DRAG & DROP RING CEREMONY ================= */
+    .ring-ceremony-section {
+      background: linear-gradient(135deg, #1b020a, #360515);
+      border: 1px solid var(--gold-primary);
+      border-radius: 12px;
+      padding: 8px;
+      margin: 6px 0;
+      color: #fff;
+      touch-action: none;
+    }
+
+    .ring-ceremony-title {
+      font-size: 0.68rem;
+      color: var(--gold-primary);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .ring-arena {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 6px;
+      position: relative;
+      height: 60px;
+    }
+
+    .ring-target-slot {
+      width: 52px;
+      height: 52px;
+      border: 2px dashed rgba(245, 215, 127, 0.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      font-weight: 700;
+      background: rgba(0, 0, 0, 0.3);
+      transition: all 0.3s;
+    }
+
+    .ring-target-slot.hovered {
+      border-color: #fff;
+      transform: scale(1.1);
+      background: rgba(212, 175, 55, 0.25);
+      box-shadow: 0 0 15px var(--gold-primary);
+    }
+
+    .ring-item {
+      font-size: 2rem;
+      cursor: grab;
+      z-index: 10;
+      user-select: none;
+      touch-action: none;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .ring-item:active {
+      cursor: grabbing;
+      transform: scale(1.2);
+    }
+
+    /* Buttons */
+    .button-group {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .grand-btn {
+      flex: 1;
+      padding: 10px 6px;
+      border-radius: 25px;
+      border: none;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .btn-gold {
+      background: var(--gold-gradient);
+      color: #2b1100;
+      box-shadow: 0 4px 12px rgba(179, 135, 40, 0.4);
+    }
+
+    .btn-maroon {
+      background: linear-gradient(135deg, #5e051d, #360210);
+      color: var(--gold-primary);
+      border: 1px solid var(--gold-primary);
+    }
+
+    /* ================= 4. PROFILE MODALS ================= */
+    .profile-modal {
+      position: absolute;
+      inset: 10px;
+      z-index: 100;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fffdf8 0%, #f6ebe0 100%);
+      border: 2px solid var(--gold-primary);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.85);
+      padding: 12px 14px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+    }
+
+    .back-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--royal-maroon);
+      border-bottom: 1px solid rgba(114, 9, 44, 0.2);
+      padding-bottom: 4px;
+    }
+
+    .profile-avatar-box {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      margin: 4px auto;
+      background: linear-gradient(135deg, #bf953f, #fcf6ba, #aa771c);
+      padding: 3px;
+      box-shadow: 0 4px 12px rgba(179, 135, 40, 0.45);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      background: #f4eae1;
+    }
+
+    .profile-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #63051e;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    .profile-role {
+      text-align: center;
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
+      color: #b38728;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .profile-details-card {
+      background: #fff;
+      border: 1px solid rgba(179, 135, 40, 0.3);
+      border-radius: 8px;
+      padding: 8px;
+      margin: 4px 0;
+      text-align: left;
+      font-size: 0.74rem;
+      line-height: 1.35;
+      color: #444;
+    }
+
+    .profile-details-card p strong {
+      color: #1a0208;
+      font-size: 0.7rem;
+    }
+
+    .profile-quote {
+      font-style: italic;
+      font-size: 0.7rem;
+      color: #666;
+      border-left: 3px solid var(--gold-primary);
+      padding-left: 6px;
+      margin-top: 4px;
+    }
+
+    .bottom-golden-box {
+      width: 100%;
+      height: 250px;
+      border: 3px solid #d4af37;
+      border-radius: 14px;
+      margin: 6px 0;
+      padding: 4px;
+      background: linear-gradient(135deg, #bf953f, #fcf6ba, #aa771c);
+      box-shadow: 0 6px 20px rgba(179, 135, 40, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .golden-box-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      background: #2e0413;
+      display: block;
+    }
+
+    .btn-compact {
+      width: fit-content;
+      min-width: 170px;
+      margin: 4px auto 0 auto;
+      padding: 6px 16px;
+      font-size: 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    /* ================= 5. BLESSINGS POPUP ================= */
+    .blessing-popup {
+      position: absolute;
+      inset: 12px;
+      background: rgba(18, 1, 7, 0.97);
+      border: 2px solid var(--gold-primary);
+      border-radius: 16px;
+      z-index: 120;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      padding: 16px 14px;
+      box-shadow: 0 0 50px rgba(245, 215, 127, 0.5);
+      overflow-y: auto;
+    }
+
+    .blessing-icon {
+      font-size: 2.2rem;
+      animation: pulse-seal 1.8s infinite;
+    }
+
+    .blessing-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      margin: 4px 0 2px;
+    }
+
+    .blessing-text {
+      font-size: 0.76rem;
+      color: #eedacf;
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+
+    .blessing-golden-box {
+      width: 100%;
+      height: 240px;
+      border: 3px solid #d4af37;
+      border-radius: 12px;
+      padding: 4px;
+      background: linear-gradient(135deg, #bf953f, #fcf6ba, #aa771c);
+      margin: 4px 0 8px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    @keyframes pulse-seal {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+    @keyframes float-text {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grand-scene" id="scene">
+
+    <!-- 1. 3D ROYAL GATES & SEAL (Tap anywhere to open) -->
+    <div class="gate-wrapper" id="gateWrapper" onclick="openDoors()">
+      <div class="door door-left" id="doorLeft">
+        <div class="door-pattern">⚜</div>
+      </div>
+      <div class="door door-right" id="doorRight">
+        <div class="door-pattern">⚜</div>
+      </div>
+
+      <div class="ribbon-bar" id="ribbonTrigger">
+        <div class="satin-ribbon"></div>
+        <div class="royal-seal">
+          <span>💍</span>
+          <p>TAP TO CUT</p>
+        </div>
+        <div class="tap-beacon">✦ TOUCH TO UNVEIL INVITATION ✦</div>
+      </div>
+    </div>
+
+    <!-- 2. MAIN INVITATION CARD -->
+    <div class="grand-card-stage" id="mainCard">
+      <div class="invitation-inner-border">
+
+        <div>
+          <p class="palace-title">Lovable Engagement Ceremony</p>
+          <p class="sub-head">With the divine blessings of our elders & family</p>
+        </div>
+
+        <!-- Interactive Couple Names -->
+        <div class="couple-title-wrap">
+          <div class="name-btn" onclick="showBride()">
+            M.Parkavi
+            <span class="name-hint">👑 Tap for Bride's Story</span>
+          </div>
+          <span class="ampersand">&</span>
+          <div class="name-btn" onclick="showGroom()">
+            G.Vignesh
+            <span class="name-hint">🤵 Tap for Groom's Story</span>
+          </div>
+        </div>
+
+        <!-- Date & Venue -->
+        <div>
+          <p style="font-size: 0.68rem; letter-spacing: 1.2px; color: #777; text-transform: uppercase;">Cordially invite your gracious presence on</p>
+          <div class="event-info-box">
+            <div class="event-date-highlight">SUNDAY, AUGUST 30</div>
+            <div class="event-time-venue">
+              <strong>Muhurtham:</strong> 10:30 AM – 11:30 AM<br>
+              <strong>Venue:</strong> Thangam Mahal, Tirunelveli-Town, 627008
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Countdown -->
+        <div>
+          <div class="timer-container">
+            <div class="timer-card"><span id="days">00</span><label>Days</label></div>
+            <div class="timer-card"><span id="hours">00</span><label>Hours</label></div>
+            <div class="timer-card"><span id="mins">00</span><label>Mins</label></div>
+            <div class="timer-card"><span id="secs">00</span><label>Secs</label></div>
+          </div>
+        </div>
+
+        <!-- 3. INTERACTIVE DRAG & DROP RING CEREMONY -->
+        <div class="ring-ceremony-section">
+          <div class="ring-ceremony-title">✦ Interactive Ring Exchange ✦</div>
+          <p style="font-size: 0.62rem; color: #ffdca8; margin-top: 2px;">Drag both the ring & diamond into the circle</p>
+          
+          <div class="ring-arena" id="ringArena">
+            <div class="ring-item" id="ringLeft">💍</div>
+            <div class="ring-target-slot" id="ringSlot">Unite</div>
+            <div class="ring-item" id="ringRight">💍</div>
+          </div>
+        </div>
+
+        <!-- Action Links -->
+        <div class="button-group">
+          <a href="https://maps.app.goo.gl/YWs2Z8T7NP3w388d8" target="_blank" class="grand-btn btn-gold">📍 View Venue</a>
+          <a href="https://wa.me/?text=Warmest+congratulations+on+the+Engagement!+Delighted+to+celebrate+with+you." target="_blank" class="grand-btn btn-maroon">💬 Send Wishes</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 4. BRIDE PROFILE MODAL -->
+    <div class="profile-modal" id="brideModal">
+      <div class="back-nav" onclick="closeModals()">
+        <span>←</span> Back to Main Invitation
+      </div>
+      <div>
+        <div class="profile-avatar-box">
+          <img src="bride-avatar.jpg" alt="Bride Portrait" class="profile-avatar-img" onerror="this.src='bride-bg.jpg'" />
+        </div>
+        <div class="profile-name">M.Parkavi</div>
+        <div class="profile-role">The Beautiful Bride-To-Be</div>
+      </div>
+      <div class="profile-details-card">
+        <p><strong>Education & Profession:</strong> Master of Computer Science(MSc) & Working at Innovative Work Solution Inc.</p>
+        <p style="margin-top: 4px;"><strong>Passions:</strong> Classical music, photography, and traveling to Beautiful spots.</p>
+        <div class="profile-quote">
+          "Excited to begin this beautiful new chapter of love, harmony, and togetherness with everyone's blessings."
+        </div>
+      </div>
+
+      <div class="bottom-golden-box">
+        <img src="bride-bg.jpg" alt="Bride Photo" class="golden-box-inner" onerror="this.style.display='none'" />
+      </div>
+
+      <button class="grand-btn btn-gold btn-compact" onclick="closeModals()">Return to Invitation</button>
+    </div>
+
+    <!-- 5. GROOM PROFILE MODAL -->
+    <div class="profile-modal" id="groomModal">
+      <div class="back-nav" onclick="closeModals()">
+        <span>←</span> Back to Main Invitation
+      </div>
+      <div>
+        <div class="profile-avatar-box">
+          <img src="groom-avatar.jpg" alt="Groom Portrait" class="profile-avatar-img" onerror="this.src='groom-bg.jpg'" />
+        </div>
+        <div class="profile-name">G.Vignesh</div>
+        <div class="profile-role">The Charming Groom-To-Be</div>
+      </div>
+      <div class="profile-details-card">
+        <p><strong>Education & Profession:</strong> Bachelor of Science in Mathematics(BSc Mathematics) & Travelling Ticket Examiner (TTR) Indian-Railways</p>
+        <p style="margin-top: 4px;"><strong>Passions:</strong> Gamer, Travel-Lover, Movie-lover</p>
+        <div class="profile-quote">
+          "Blessed to find my life partner and eagerly looking forward to celebrating our milestone day with all of you."
+        </div>
+      </div>
+
+      <div class="bottom-golden-box">
+        <img src="groom-bg.jpg" alt="Groom Photo" class="golden-box-inner" onerror="this.style.display='none'" />
+      </div>
+
+      <button class="grand-btn btn-gold btn-compact" onclick="closeModals()">Return to Invitation</button>
+    </div>
+
+    <!-- 6. BLESSINGS POPUP -->
+    <div class="blessing-popup" id="blessingPopup">
+      <div>
+        <div class="blessing-icon">💖✨💍</div>
+        <div class="blessing-title">Rings Interlocked!</div>
+        <p class="blessing-text">
+          "Two souls united in love and destiny.<br>
+          Thank you for showering your heartfelt blessings upon the new couple!"
+        </p>
+      </div>
+
+      <div class="blessing-golden-box">
+        <img src="blessing-bg.jpg" alt="Couple Blessing" class="golden-box-inner" onerror="this.style.display='none'" />
+      </div>
+
+      <button class="grand-btn btn-gold btn-compact" onclick="closeBlessing()">Continue</button>
+    </div>
+
+  </div>
+
+  <script>
+    // 1. OPEN DOORS
+    let isOpen = false;
+    function openDoors() {
+      if (isOpen) return;
+      isOpen = true;
+
+      document.getElementById('doorLeft').style.transform = 'rotateY(-115deg)';
+      document.getElementById('doorRight').style.transform = 'rotateY(115deg)';
+      document.getElementById('ribbonTrigger').style.opacity = '0';
+      document.getElementById('ribbonTrigger').style.transform = 'translateY(-50%) scale(0.6)';
+
+      setTimeout(function() {
+        document.getElementById('gateWrapper').style.display = 'none';
+      }, 1000);
+    }
+
+    // 2. BRIDE & GROOM MODALS
+    function showBride() {
+      document.getElementById('brideModal').style.display = 'flex';
+    }
+
+    function showGroom() {
+      document.getElementById('groomModal').style.display = 'flex';
+    }
+
+    function closeModals() {
+      document.getElementById('brideModal').style.display = 'none';
+      document.getElementById('groomModal').style.display = 'none';
+    }
+
+    // 3. UNIVERSAL DRAG & DROP PHYSICS (TOUCH & MOUSE COMPATIBLE)
+    let leftDropped = false;
+    let rightDropped = false;
+
+    const ringSlot = document.getElementById('ringSlot');
+    const ringLeft = document.getElementById('ringLeft');
+    const ringRight = document.getElementById('ringRight');
+
+    function makeDraggable(element, side) {
+      let startX = 0, startY = 0;
+      let currentX = 0, currentY = 0;
+      let isDragging = false;
+
+      function onStart(e) {
+        if ((side === 'left' && leftDropped) || (side === 'right' && rightDropped)) return;
+        isDragging = true;
+        
+        const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+        
+        startX = clientX - currentX;
+        startY = clientY - currentY;
+
+        element.style.transition = 'none';
+        element.style.zIndex = '999';
+
+        window.addEventListener('mousemove', onMove, { passive: false });
+        window.addEventListener('mouseup', onEnd);
+        window.addEventListener('touchmove', onMove, { passive: false });
+        window.addEventListener('touchend', onEnd);
+      }
+
+      function onMove(e) {
+        if (!isDragging) return;
+        if (e.cancelable) e.preventDefault();
+
+        const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+        currentX = clientX - startX;
+        currentY = clientY - startY;
+
+        element.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.25)`;
+
+        // Collision Check with target slot
+        const elemRect = element.getBoundingClientRect();
+        const slotRect = ringSlot.getBoundingClientRect();
+
+        const elemCenterX = elemRect.left + elemRect.width / 2;
+        const elemCenterY = elemRect.top + elemRect.height / 2;
+
+        if (
+          elemCenterX >= slotRect.left &&
+          elemCenterX <= slotRect.right &&
+          elemCenterY >= slotRect.top &&
+          elemCenterY <= slotRect.bottom
+        ) {
+          ringSlot.classList.add('hovered');
+        } else {
+          ringSlot.classList.remove('hovered');
+        }
+      }
+
+      function onEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+
+        window.removeEventListener('mousemove', onMove);
+        window.removeEventListener('mouseup', onEnd);
+        window.removeEventListener('touchmove', onMove);
+        window.removeEventListener('touchend', onEnd);
+
+        ringSlot.classList.remove('hovered');
+
+        const elemRect = element.getBoundingClientRect();
+        const slotRect = ringSlot.getBoundingClientRect();
+
+        const elemCenterX = elemRect.left + elemRect.width / 2;
+        const elemCenterY = elemRect.top + elemRect.height / 2;
+
+        // Check if inside drop zone
+        if (
+          elemCenterX >= slotRect.left - 15 &&
+          elemCenterX <= slotRect.right + 15 &&
+          elemCenterY >= slotRect.top - 15 &&
+          elemCenterY <= slotRect.bottom + 15
+        ) {
+          // Successfully dropped in center
+          if (side === 'left') leftDropped = true;
+          if (side === 'right') rightDropped = true;
+
+          element.style.transition = 'all 0.3s ease';
+          element.style.opacity = '0';
+          element.style.pointerEvents = 'none';
+
+          if (side === 'left' && !rightDropped) {
+            ringSlot.innerHTML = '💍';
+            ringSlot.style.borderColor = '#ffd700';
+          } else if (side === 'right' && !leftDropped) {
+            ringSlot.innerHTML = '💍';
+            ringSlot.style.borderColor = '#ffd700';
+          }
+
+          checkBothDropped();
+        } else {
+          // Snap back to origin if released outside
+          element.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+          currentX = 0;
+          currentY = 0;
+          element.style.transform = 'translate(0px, 0px)';
+          element.style.zIndex = '10';
+        }
+      }
+
+      element.addEventListener('mousedown', onStart);
+      element.addEventListener('touchstart', onStart, { passive: false });
+    }
+
+    makeDraggable(ringLeft, 'left');
+    makeDraggable(ringRight, 'right');
+
+    function checkBothDropped() {
+      if (leftDropped && rightDropped) {
+        setTimeout(function() {
+          ringSlot.innerHTML = '💍✨💍';
+          ringSlot.style.borderColor = '#ffd700';
+          ringSlot.style.background = 'rgba(212, 175, 55, 0.4)';
+          ringSlot.style.transform = 'scale(1.15)';
+
+          setTimeout(function() {
+            document.getElementById('blessingPopup').style.display = 'flex';
+          }, 350);
+        }, 300);
+      }
+    }
+
+    function closeBlessing() {
+      document.getElementById('blessingPopup').style.display = 'none';
+    }
+
+    // 4. COUNTDOWN TIMER TO AUGUST 30
+    const targetDate = new Date("August 30, 2026 10:30:00").getTime();
+
+    function updateTime() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff > 0) {
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((diff / 1000 / 60) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+
+        document.getElementById('days').innerText = String(d).padStart(2, '0');
+        document.getElementById('hours').innerText = String(h).padStart(2, '0');
+        document.getElementById('mins').innerText = String(m).padStart(2, '0');
+        document.getElementById('secs').innerText = String(s).padStart(2, '0');
+      }
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
+</body>
+</html>
