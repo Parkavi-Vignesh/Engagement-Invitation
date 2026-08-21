@@ -30,7 +30,7 @@
       overflow: hidden;
     }
 
-    /* Main Container */
+    /* Main Viewport Container */
     .grand-scene {
       position: relative;
       width: 100vw;
@@ -264,7 +264,7 @@
       line-height: 1.35;
     }
 
-    /* Countdown */
+    /* Countdown Grid */
     .timer-container {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -655,7 +655,7 @@
         <!-- 3. INTERACTIVE DRAG & DROP RING CEREMONY -->
         <div class="ring-ceremony-section">
           <div class="ring-ceremony-title">✦ Interactive Ring Exchange ✦</div>
-          <p style="font-size: 0.62rem; color: #ffdca8; margin-top: 2px;">Drag both the ring & diamond into the circle</p>
+          <p style="font-size: 0.62rem; color: #ffdca8; margin-top: 2px;">Drag both rings into the circle</p>
           
           <div class="ring-arena" id="ringArena">
             <div class="ring-item" id="ringLeft">💍</div>
@@ -822,7 +822,7 @@
 
         element.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.25)`;
 
-        // Collision Check with target slot
+        // Collision detection with target slot
         const elemRect = element.getBoundingClientRect();
         const slotRect = ringSlot.getBoundingClientRect();
 
@@ -858,14 +858,13 @@
         const elemCenterX = elemRect.left + elemRect.width / 2;
         const elemCenterY = elemRect.top + elemRect.height / 2;
 
-        // Check if inside drop zone
+        // Check if dropped within the zone
         if (
           elemCenterX >= slotRect.left - 15 &&
           elemCenterX <= slotRect.right + 15 &&
           elemCenterY >= slotRect.top - 15 &&
           elemCenterY <= slotRect.bottom + 15
         ) {
-          // Successfully dropped in center
           if (side === 'left') leftDropped = true;
           if (side === 'right') rightDropped = true;
 
@@ -883,7 +882,7 @@
 
           checkBothDropped();
         } else {
-          // Snap back to origin if released outside
+          // Snap back to starting location
           element.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
           currentX = 0;
           currentY = 0;
